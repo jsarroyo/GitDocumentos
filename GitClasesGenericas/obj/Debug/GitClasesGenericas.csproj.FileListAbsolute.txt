@@ -1,0 +1,2 @@
+C:\Users\jarroyo\source\repos\GitDocumentos\GitClasesGenericas\obj\Debug\GitClasesGenericas.csprojResolveAssemblyReference.cache
+C:\Users\jarroyo\source\repos\GitDocumentos\GitClasesGenericas\obj\Debug\GitClasesGenericas.csproj.CoreCompileInputs.cache
