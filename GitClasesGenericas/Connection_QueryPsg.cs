@@ -13,6 +13,11 @@ namespace GitClasesGenericas
         private string ConnectionString;
         NpgsqlConnection con;
 
+        public Connection_QueryPsg()
+        {
+
+        }
+
         public void OpenConection()
         {
             con = new NpgsqlConnection(ConnectionString);
@@ -25,6 +30,7 @@ namespace GitClasesGenericas
 
         public void ExecuteQueries(string Query_)
         {
+            // buscar manera de agreegar n parametros para los strored procedure
             NpgsqlCommand cmd = new NpgsqlCommand(Query_, con);
             cmd.ExecuteNonQuery();
         }
