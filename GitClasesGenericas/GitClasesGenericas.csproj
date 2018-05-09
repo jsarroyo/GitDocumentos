@@ -51,6 +51,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Connection_QueryPsg.cs" />
     <Compile Include="Connection_QuerySQL.cs" />
+    <Compile Include="ManejoExcell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
