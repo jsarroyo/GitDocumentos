@@ -48,6 +48,10 @@
       <Project>{1dfb919a-954d-4b59-a335-d6acf4c175cb}</Project>
       <Name>GitClasesGenericas</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GitDocumentos\GitDocumentos.csproj">
+      <Project>{c95c858c-b031-4465-8ab4-86ae40ee933a}</Project>
+      <Name>GitDocumentos</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

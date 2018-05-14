@@ -1,54 +1,54 @@
-﻿using Npgsql;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GitClasesGenericas
 {
-    public class Connection_QueryPsg
+    public class Connection_SQL
     {
-        private string ConnectionString;
-        NpgsqlConnection con;
 
-        public Connection_QueryPsg()
-        {
-
-        }
+        string ConnectionString = "";
+        SqlConnection con;
 
         public void OpenConection()
         {
-            con = new NpgsqlConnection(ConnectionString);
+            con = new SqlConnection(ConnectionString);
             con.Open();
         }
+
+
         public void CloseConnection()
         {
             con.Close();
         }
 
+
         public void ExecuteQueries(string Query_)
         {
-            // buscar manera de agreegar n parametros para los strored procedure
-            NpgsqlCommand cmd = new NpgsqlCommand(Query_, con);
+            SqlCommand cmd = new SqlCommand(Query_, con);
             cmd.ExecuteNonQuery();
         }
-        public NpgsqlDataReader  DataReader(string Query_)
+
+
+        public SqlDataReader DataReader(string Query_)
         {
-            NpgsqlCommand cmd = new NpgsqlCommand(Query_, con);
-            NpgsqlDataReader dr = cmd.ExecuteReader();
+            SqlCommand cmd = new SqlCommand(Query_, con);
+            SqlDataReader dr = cmd.ExecuteReader();
             return dr;
         }
+
+
         public object ShowDataInGridView(string Query_)
         {
-            NpgsqlDataAdapter  dr = new NpgsqlDataAdapter(Query_, ConnectionString);
+            SqlDataAdapter dr = new SqlDataAdapter(Query_, ConnectionString);
             DataSet ds = new DataSet();
             dr.Fill(ds);
             object dataum = ds.Tables[0];
-
             return dataum;
         }
-         
     }
 }

@@ -3,37 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GitDocumentos;
 using GitClasesGenericas;
+
 
 namespace GitDocumentos_Log
 {
     public class Entidad_Log
     {
 
-        public Boolean Agregar(Entidad_Log po_Clase)
+        public Boolean Agregar(Entidad po_Clase, Connection_Psg po_Conexion)
         {
 
             string sql3 = @"add_entidad";
+             
+            po_Conexion.OpenConection();
+            List<Argumento> elements = new List<Argumento>();
+            Argumento argumento = new Argumento("id", po_Clase.Id.ToString());
+            elements.Add(argumento);
+            Argumento argumento2 = new Argumento("nombre", po_Clase.Nombre.ToString());
+            elements.Add(argumento2);
 
+            Argumento argumento3 = new Argumento("esvendedor", po_Clase.EsVendedor.ToString());
+            elements.Add(argumento3);
 
-            Connection_QueryPsg db = new Connection_QueryPsg();
-            db.OpenConection();
+            Argumento argumento4 = new Argumento("escliente", po_Clase.EsCliente.ToString());
+            elements.Add(argumento4);
 
-            db.ExecuteQueries(sql3);
+            Argumento argumento5 = new Argumento("escolaborador", po_Clase.EsColaborador.ToString());
+            elements.Add(argumento5);
 
-            //NpgsqlConnection pgcon = new NpgsqlConnection(pgconnectionstring);
-            //pgcon.Open();
-            //NpgsqlCommand pgcom = new NpgsqlCommand(sql3, pgcon);
-            //pgcom.CommandType = CommandType.StoredProcedure;
-            //pgcom.Parameters.AddWithValue(":pEmail", "myemail@hotmail.com");
-            //pgcom.Parameters.AddWithValue(":pPassword", "eikaylie78");
-            //NpgsqlDataReader pgreader = pgcom.ExecuteReader();
+            Argumento argumento6 = new Argumento("escliente", po_Clase.EsProveedor.ToString());
+            elements.Add(argumento6);
 
-            //while (pgreader.Read())
-            //{
-            //    string name = pgreader.GetString(1);
-            //    string surname = pgreader.GetString(2);
-            //}
+            po_Conexion.ExecuteQueries(sql3, elements);
 
             return true;
         }
